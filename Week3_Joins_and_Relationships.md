@@ -40,14 +40,90 @@ INNER JOIN products p ON oi.product_id = p.product_id
 WHERE o.order_date >= '2024-01-01';
 ```
 
-## Practice Exercises:
-1. Create tables with relationships
-2. Practice all types of joins
-3. Write queries joining multiple tables
-4. Use table aliases effectively
-5. Combine joins with WHERE clauses
-6. Handle NULL values in joins
+### Practice Exercises:
 
+## **1. Create Tables with Relationships**
+
+Learn how to define:
+
+* Primary keys
+* Foreign keys
+* One-to-many and many-to-many relationships
+
+Practice creating schemas that connect tables such as `customers`, `orders`, and `products`.
+
+---
+
+## **2. Practice All Types of Joins**
+
+Work with every join type:
+
+* `INNER JOIN`
+* `LEFT JOIN`
+* `RIGHT JOIN`
+* `FULL OUTER JOIN`
+* `CROSS JOIN`
+
+Understand when each join is appropriate and how it affects the result.
+
+---
+
+## **3. Write Queries Joining Multiple Tables**
+
+Improve your ability to connect two or more tables in the same query.
+Examples include:
+
+* Joining customers → orders → products
+* Joining employees → departments → locations
+
+---
+
+## **4. Use Table Aliases Effectively**
+
+Use short aliases to make queries cleaner and easier to read:
+
+```sql
+SELECT c.name, o.order_id
+FROM customers AS c
+JOIN orders AS o ON c.customer_id = o.customer_id;
+```
+
+---
+
+## **5. Combine Joins with WHERE Clauses**
+
+Practice filtering joined data using:
+
+* Date filters
+* Category filters
+* Price or quantity ranges
+
+Example:
+
+```sql
+SELECT c.name, o.total_amount
+FROM customers c
+JOIN orders o ON c.customer_id = o.customer_id
+WHERE o.total_amount > 100;
+```
+
+---
+
+## **6. Handle NULL Values in Joins**
+
+Learn how different joins treat missing data:
+
+* Missing matches in left/right joins
+* Using `COALESCE()` to replace NULLs
+* Detecting unmatched rows
+
+Example:
+
+```sql
+SELECT p.product_name, COALESCE(o.quantity, 0) AS quantity_sold
+FROM products p
+LEFT JOIN orders o ON p.product_id = o.product_id;
+```
 ## Key Concepts to Master:
 - Understanding table relationships
 - Join syntax and types
@@ -65,4 +141,5 @@ WHERE o.order_date >= '2024-01-01';
 - Visual Representation of SQL Joins
 - Database normalization principles
 - Join optimization techniques
+
 - Real-world join examples 
