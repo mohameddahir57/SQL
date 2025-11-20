@@ -1,19 +1,109 @@
 # Week 4: Aggregate Functions & Grouping
 
-## Topics:
-1. Aggregate Functions
-   - COUNT()
-   - SUM()
-   - AVG()
-   - MAX()
-   - MIN()
-   - DISTINCT with aggregates
-   
-2. GROUP BY and HAVING
-   - Grouping data
-   - Filtering groups
-   - Complex grouping scenarios
-   - Multiple column grouping
+## 1\. 📊 Aggregate Functions
+
+Aggregate functions operate on a set of rows and return a single summary value. They are typically used with the `SELECT` statement and often with the `GROUP BY` clause.
+
+  * **`COUNT()`**: Returns the number of items in a group.
+      * `COUNT(*)`: Counts all rows, including NULL values.
+      * `COUNT(column_name)`: Counts non-NULL values in the specified column.
+  * **`SUM()`**: Calculates the **sum** of all values in the specified numeric column. It ignores NULL values.
+  * **`AVG()`**: Calculates the **average (mean)** of all values in the specified numeric column. It ignores NULL values.
+  * **`MAX()`**: Returns the **largest** value in the specified column. It works with numeric, string, and date/time data types.
+  * **`MIN()`**: Returns the **smallest** value in the specified column. It works with numeric, string, and date/time data types.
+  * **`DISTINCT` with Aggregates**: Used inside an aggregate function to only consider unique (non-duplicate) values.
+
+### Example Usage:
+
+```sql
+SELECT
+    COUNT(*) AS TotalRecords,
+    SUM(OrderTotal) AS GrandTotalSales,
+    AVG(OrderTotal) AS AverageOrderValue,
+    MAX(OrderDate) AS MostRecentOrder,
+    MIN(OrderDate) AS EarliestOrder,
+    COUNT(DISTINCT CustomerID) AS UniqueCustomers
+FROM
+    Orders;
+```
+
+-----
+
+## 2\. 📝 GROUP BY and HAVING
+
+These clauses are used to organize data into groups and then apply filtering to those groups.
+
+### Grouping Data (`GROUP BY`)
+
+The **`GROUP BY`** clause divides the rows returned by the `SELECT` statement into sets of summary rows by the values in one or more columns. It is essential when you use an aggregate function and want that function to calculate a value **for each unique group** rather than for the entire dataset.
+
+  * **Rule:** Any column selected in the `SELECT` list that is **not** inside an aggregate function *must* be included in the `GROUP BY` clause.
+
+**Example: Total sales per employee**
+
+```sql
+SELECT
+    EmployeeID,
+    SUM(OrderTotal) AS EmployeeTotalSales
+FROM
+    Orders
+GROUP BY
+    EmployeeID;
+```
+
+### Filtering Groups (`HAVING`)
+
+The **`HAVING`** clause is used to filter groups based on the result of an aggregate function. The standard `WHERE` clause cannot filter on aggregate results (since `WHERE` executes *before* the grouping happens). `HAVING` executes *after* `GROUP BY`.
+
+  * **Scenario:** You want to see the employees whose total sales are greater than $10,000.
+
+**Example: Employees with sales \> 10000**
+
+```sql
+SELECT
+    EmployeeID,
+    SUM(OrderTotal) AS EmployeeTotalSales
+FROM
+    Orders
+GROUP BY
+    EmployeeID
+HAVING
+    SUM(OrderTotal) > 10000; -- Filtering the result of the SUM aggregate
+```
+
+### Complex Grouping Scenarios (Order of Execution)
+
+When a query contains all these clauses, they execute in a specific order:
+
+1.  **`FROM`** and **`JOIN`**: Determine the data source.
+2.  **`WHERE`**: Filters individual rows *before* grouping.
+3.  **`GROUP BY`**: Groups the remaining rows.
+4.  **Aggregate Functions**: Calculate summary values for each group.
+5.  **`HAVING`**: Filters the resulting groups.
+6.  **`SELECT`**: Outputs the final columns/aggregates.
+7.  **`ORDER BY`**: Sorts the final result set.
+
+### Multiple Column Grouping
+
+
+
+**Example: Total sales per *country and city***
+
+```sql
+SELECT
+    ShippingCountry,
+    ShippingCity,
+    SUM(OrderTotal) AS LocationTotalSales
+FROM
+    Orders
+GROUP BY
+    ShippingCountry,
+    ShippingCity
+ORDER BY
+    LocationTotalSales DESC;
+```
+
+Would you like to try constructing a practice query using these concepts?
 
 ## Examples:
 ```sql
@@ -320,3 +410,4 @@ These are example tables for practicing the queries above.
 - Data Analysis with SQL
 
 - Performance Optimization for Aggregates 
+
