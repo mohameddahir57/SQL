@@ -1,6 +1,6 @@
 # Week 2: Filtering & Data Manipulation
 
-## 1\. Advanced WHERE Clauses 🕵️‍♀️
+## 1\. Advanced WHERE Clauses 
 
 The `WHERE` clause is used to filter records in a result set or to specify which records to update or delete. These operators allow you to define complex filtering conditions.
 
@@ -38,7 +38,7 @@ WHERE
 
 -----
 
-## 2\. Data Manipulation (DML) ✍️
+## 2\. Data Manipulation (DML) 
 
 **Data Manipulation Language (DML)** commands are used to add, modify, and delete data in a database.
 
@@ -100,7 +100,7 @@ WHERE
     OrderDate < '2024-01-01'; -- Deletes all orders placed before Jan 1, 2024
 ```
 
-> **⚠️ Important Note on `DELETE`:**
+> ** Important Note on `DELETE`:**
 > If you want to delete all rows from a table, `TRUNCATE TABLE TableName;` is often faster and uses fewer system resources than `DELETE FROM TableName;`, as `TRUNCATE` does not log individual row deletions.
 
 ## Examples:
@@ -232,4 +232,5 @@ WHERE created_at < '2023-01-01'
 - SQL data manipulation best practices
 
 - Pattern matching documentation 
+
 
