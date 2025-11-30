@@ -1760,7 +1760,7 @@ Great!  Let’s dive into **Indexes** — the secret behind fast SQL queries.
 
 ---
 
-## 🚀 What Is an Index?
+##  What Is an Index?
 
 An **index** in SQL is like an index in a book — it helps you **find rows faster** without scanning the entire table.
 
@@ -1774,7 +1774,7 @@ An **index** in SQL is like an index in a book — it helps you **find rows fast
 
 ---
 
-## 📚 Basic Index Syntax
+##  Basic Index Syntax
 
 ```sql
 CREATE INDEX index_name ON table_name(column_name);
@@ -1794,7 +1794,7 @@ SELECT * FROM island WHERE country_code = 'JP';
 
 ---
 
-## 💡 When to Use Indexes
+##  When to Use Indexes
 
 | Use Index If...                              |
 | -------------------------------------------- |
@@ -1805,17 +1805,17 @@ SELECT * FROM island WHERE country_code = 'JP';
 
 ---
 
-## ⚠️ Indexes Are Not Free
+##  Indexes Are Not Free
 
 | Downside                       | Why it matters                      |
 | ------------------------------ | ----------------------------------- |
-| 🐢 Slower INSERT/UPDATE/DELETE | Indexes must also be updated        |
-| 💽 Uses extra disk space       | Especially with many or big indexes |
-| ❌ Too many indexes = confusion | Can actually slow down performance  |
+|  Slower INSERT/UPDATE/DELETE | Indexes must also be updated        |
+|  Uses extra disk space       | Especially with many or big indexes |
+|  Too many indexes = confusion | Can actually slow down performance  |
 
 ---
 
-## 🧠 Types of Indexes
+##  Types of Indexes
 
 | Index Type        | Description                                   |
 | ----------------- | --------------------------------------------- |
@@ -1828,7 +1828,7 @@ SELECT * FROM island WHERE country_code = 'JP';
 
 ---
 
-## 🔍 Composite Index Example
+##  Composite Index Example
 
 ```sql
 CREATE INDEX idx_island_country_area ON island(country_code, area_km2);
@@ -1845,7 +1845,7 @@ WHERE country_code = 'ID' AND area_km2 > 1000;
 
 ---
 
-## 🔧 Managing Indexes
+##  Managing Indexes
 
 | Task          | Command                                |
 | ------------- | -------------------------------------- |
@@ -1855,7 +1855,7 @@ WHERE country_code = 'ID' AND area_km2 > 1000;
 
 ---
 
-## 🧠 Example: Indexed vs Non-Indexed
+##  Example: Indexed vs Non-Indexed
 
 ```sql
 -- No index
@@ -1871,10 +1871,10 @@ CREATE INDEX idx_name ON island(name);
 
 ## 🧪 Summary
 
-✅ Index = fast lookup
-✅ Use on WHERE, JOIN, ORDER BY
-⚠️ Don’t overuse (hurts performance + space)
-🛠 Use `SHOW INDEX` to review what's active
+ Index = fast lookup
+ Use on WHERE, JOIN, ORDER BY
+ Don’t overuse (hurts performance + space)
+ Use `SHOW INDEX` to review what's active
 
 ---
 
@@ -1884,27 +1884,27 @@ CREATE INDEX idx_name ON island(name);
 
 
 
-Excellent choice! 🔒 **User Permissions & Security** are essential for protecting your data and controlling access in a multi-user environment.
+Excellent choice!  **User Permissions & Security** are essential for protecting your data and controlling access in a multi-user environment.
 
 ---
 
-## 🔐 Why It Matters
+##  Why It Matters
 
 Without proper security:
 
-* Anyone could delete or modify critical data 😱
+* Anyone could delete or modify critical data 
 * Sensitive info (e.g., emails, passwords) could be leaked
 * One careless user = big data loss
 
 ---
 
-## 👤 SQL Users and Privileges
+##  SQL Users and Privileges
 
 In most SQL systems (like MySQL, PostgreSQL, etc.), **users** are separate from tables and must be given **permissions**.
 
 ---
 
-### 🧱 1. Creating a New User
+###  1. Creating a New User
 
 ```sql
 -- Syntax may vary slightly by DBMS
@@ -1913,7 +1913,7 @@ CREATE USER 'student'@'localhost' IDENTIFIED BY 'strong_password';
 
 ---
 
-### ✅ 2. Granting Permissions
+###  2. Granting Permissions
 
 ```sql
 -- Grant read-only access
@@ -1925,7 +1925,7 @@ GRANT SELECT, INSERT, UPDATE, DELETE ON school.students TO 'student'@'localhost'
 
 ---
 
-### ⛔ 3. Revoking Permissions
+###  3. Revoking Permissions
 
 ```sql
 REVOKE INSERT, UPDATE ON school.students FROM 'student'@'localhost';
@@ -1933,7 +1933,7 @@ REVOKE INSERT, UPDATE ON school.students FROM 'student'@'localhost';
 
 ---
 
-### 🔍 4. Check Permissions
+###  4. Check Permissions
 
 ```sql
 SHOW GRANTS FOR 'student'@'localhost';
@@ -1941,7 +1941,7 @@ SHOW GRANTS FOR 'student'@'localhost';
 
 ---
 
-## 🔐 Common Privileges
+##  Common Privileges
 
 | Privilege      | What it allows                           |
 | -------------- | ---------------------------------------- |
@@ -1956,7 +1956,7 @@ SHOW GRANTS FOR 'student'@'localhost';
 
 ---
 
-### 📦 Example Use Case
+###  Example Use Case
 
 ```sql
 -- Create user for reporting only
@@ -1970,26 +1970,26 @@ This user **cannot** modify or delete any data — perfect for dashboards and an
 
 ---
 
-## 🚨 Security Tips
+##  Security Tips
 
-✅ Use **strong passwords**
-✅ Limit users to **only what they need**
-✅ Avoid using the `root` user for apps
-✅ Regularly **audit permissions**
+   Use **strong passwords**
+   Limit users to **only what they need**
+   Avoid using the `root` user for apps
+   Regularly **audit permissions**
 
 ---
 
-## 🛑 Danger: Don't Do This
+##  Danger: Don't Do This
 
 ```sql
 GRANT ALL PRIVILEGES ON *.* TO 'webuser'@'%' WITH GRANT OPTION;
 ```
 
-This gives full, unrestricted access to everything! ❌
+This gives full, unrestricted access to everything! 
 
 ---
 
-## 🔐 Summary
+##  Summary
 
 | Task                  | SQL Command Example                                     |
 | --------------------- | ------------------------------------------------------- |
@@ -2005,11 +2005,11 @@ This gives full, unrestricted access to everything! ❌
 
 
 
-Perfect! 🗃️ **Normalization & Schema Design** are fundamental for creating efficient, reliable, and scalable databases. Let’s break it down.
+Perfect!  **Normalization & Schema Design** are fundamental for creating efficient, reliable, and scalable databases. Let’s break it down.
 
 ---
 
-## 🧱 What is Normalization?
+##  What is Normalization?
 
 **Normalization** is the process of organizing your database tables and relationships to:
 
@@ -2019,9 +2019,9 @@ Perfect! 🗃️ **Normalization & Schema Design** are fundamental for creating 
 
 ---
 
-## 📊 Normal Forms (NF) — Levels of Normalization
+##  Normal Forms (NF) — Levels of Normalization
 
-### 1️⃣ First Normal Form (1NF)
+### 1️ First Normal Form (1NF)
 
 * Each column contains **atomic (indivisible)** values
 * Each row is **unique**
@@ -2032,7 +2032,7 @@ A table with a column holding multiple phone numbers in one cell violates 1NF.
 
 ---
 
-### 2️⃣ Second Normal Form (2NF)
+### 2️ Second Normal Form (2NF)
 
 * Meets **1NF**
 * All **non-key columns** depend on the **whole primary key** (not just part of it)
@@ -2040,14 +2040,14 @@ A table with a column holding multiple phone numbers in one cell violates 1NF.
 
 ---
 
-### 3️⃣ Third Normal Form (3NF)
+### 3️ Third Normal Form (3NF)
 
 * Meets **2NF**
 * No transitive dependencies: Non-key columns depend **only** on the primary key, not other non-key columns
 
 ---
 
-## 🤔 Why Normalize?
+##  Why Normalize?
 
 | Benefit                | Explanation                         |
 | ---------------------- | ----------------------------------- |
@@ -2058,7 +2058,7 @@ A table with a column holding multiple phone numbers in one cell violates 1NF.
 
 ---
 
-## 🧩 Example: Normalize a Simple Table
+##  Example: Normalize a Simple Table
 
 ### Unnormalized Table: `orders`
 
@@ -2112,7 +2112,7 @@ A table with a column holding multiple phone numbers in one cell violates 1NF.
 
 ---
 
-## 🧠 Quick Recap
+##  Quick Recap
 
 | Normal Form | What it Fixes                       | Key Idea                          |
 | ----------- | ----------------------------------- | --------------------------------- |
@@ -2132,14 +2132,14 @@ Great choice! 📦 **Backup & Restore** are crucial skills for protecting your d
 
 ---
 
-## 💾 What is Backup & Restore?
+##  What is Backup & Restore?
 
 * **Backup**: A copy of your database data, saved safely elsewhere
 * **Restore**: Using a backup to recover your database to a previous state
 
 ---
 
-## 🔑 Why Backups Matter
+##  Why Backups Matter
 
 * Protect against accidental deletion or data corruption
 * Recover from hardware failure or software bugs
@@ -2169,7 +2169,7 @@ mysqldump -u username -p database_name > backup.sql
 
 ---
 
-## 🧰 Restore Methods
+##  Restore Methods
 
 ### 1. Restore from SQL Dump
 
@@ -2197,7 +2197,7 @@ mysql -u username -p database_name < backup.sql
 
 ---
 
-## 🔄 Example Workflow (MySQL)
+##  Example Workflow (MySQL)
 
 1. Backup database:
 
@@ -2213,7 +2213,7 @@ mysql -u root -p mydatabase < mydatabase_backup_2025_06_07.sql
 
 ---
 
-## ⚠️ Things to Remember
+##   Things to Remember
 
 * Always backup **before** making major changes
 * Verify your backups are complete and uncorrupted
@@ -2227,11 +2227,11 @@ mysql -u root -p mydatabase < mydatabase_backup_2025_06_07.sql
 
 
 
-Awesome! 🚀 Let’s talk about **Real-World Projects** — the best way to solidify your SQL skills by building practical, meaningful databases and queries.
+Awesome!  Let’s talk about **Real-World Projects** — the best way to solidify your SQL skills by building practical, meaningful databases and queries.
 
 ---
 
-## 🏗️ Why Real-World Projects?
+##  Why Real-World Projects?
 
 * Apply everything you’ve learned in context
 * Understand how different concepts fit together
@@ -2240,7 +2240,7 @@ Awesome! 🚀 Let’s talk about **Real-World Projects** — the best way to sol
 
 ---
 
-## 🔑 Key Elements of a Real-World Project
+##  Key Elements of a Real-World Project
 
 1. **Requirements Gathering**
 
@@ -2289,7 +2289,7 @@ Awesome! 🚀 Let’s talk about **Real-World Projects** — the best way to sol
 
 ---
 
-## 🧩 Example: Mini Inventory System Schema
+##  Example: Mini Inventory System Schema
 
 ```sql
 CREATE TABLE products (
@@ -2316,7 +2316,7 @@ CREATE TABLE product_suppliers (
 
 ---
 
-## 🚀 How to Start Your Project
+##  How to Start Your Project
 
 1. Define the scope and requirements
 2. Design tables and relationships
@@ -2331,4 +2331,5 @@ CREATE TABLE product_suppliers (
 
 ---
 *Note: This document will be updated with more SQL topics as we progress through the course.*
+
 
