@@ -99,12 +99,162 @@ END;
 ```
 
 ## Practice Exercises:
-1. Create views for common queries
-2. Write procedures with error handling
-3. Implement transaction management
-4. Create parameterized procedures
-5. Update data through views
-6. Handle complex business logic
+
+## **1. Create Views for Common Queries**
+
+### ✔ Example: Sales summary view
+
+```sql
+CREATE VIEW vw_SalesSummary AS
+SELECT 
+    CustomerID,
+    COUNT(OrderID) AS TotalOrders,
+    SUM(TotalAmount) AS TotalSpent,
+    AVG(TotalAmount) AS AvgOrderValue
+FROM Orders
+GROUP BY CustomerID;
+```
+
+---
+
+## **2. Write Procedures with Error Handling**
+
+### ✔ Example: Insert order with TRY…CATCH
+
+```sql
+CREATE PROCEDURE AddOrder
+    @CustomerID INT,
+    @Amount DECIMAL(10,2)
+AS
+BEGIN
+    BEGIN TRY
+        INSERT INTO Orders(CustomerID, TotalAmount)
+        VALUES (@CustomerID, @Amount);
+
+        SELECT 'Order added successfully' AS Message;
+    END TRY
+    BEGIN CATCH
+        SELECT 
+            ERROR_MESSAGE() AS ErrorMessage,
+            ERROR_LINE() AS ErrorLine;
+    END CATCH
+END;
+```
+
+---
+
+## **3. Implement Transaction Management**
+
+### ✔ Example: Transaction with rollback on failure
+
+```sql
+BEGIN TRAN;
+
+BEGIN TRY
+    UPDATE Accounts
+    SET Balance = Balance - 500
+    WHERE AccountID = 1;
+
+    UPDATE Accounts
+    SET Balance = Balance + 500
+    WHERE AccountID = 2;
+
+    COMMIT;
+END TRY
+BEGIN CATCH
+    ROLLBACK;
+    SELECT ERROR_MESSAGE() AS ErrorMessage;
+END CATCH;
+```
+
+---
+
+## **4. Create Parameterized Procedures**
+
+### ✔ Example: Get orders by date range
+
+```sql
+CREATE PROCEDURE GetOrdersByDate
+    @StartDate DATE,
+    @EndDate DATE
+AS
+BEGIN
+    SELECT *
+    FROM Orders
+    WHERE OrderDate BETWEEN @StartDate AND @EndDate;
+END;
+```
+
+---
+
+## **5. Update Data Through Views**
+
+### ✔ Step 1 — Create an updatable view
+
+```sql
+CREATE VIEW vw_Products AS
+SELECT ProductID, ProductName, Price
+FROM Products;
+```
+
+### ✔ Step 2 — Update through the view
+
+```sql
+UPDATE vw_Products
+SET Price = 19.99
+WHERE ProductID = 3;
+```
+
+> Works because the view is simple (no joins, no aggregates).
+
+---
+
+## **6. Handle Complex Business Logic**
+
+### ✔ Example: Order processing logic
+
+```sql
+CREATE PROCEDURE ProcessOrder
+    @OrderID INT
+AS
+BEGIN
+    BEGIN TRAN;
+
+    BEGIN TRY
+        -- Step 1: Check stock
+        IF EXISTS (
+            SELECT 1 
+            FROM OrderDetails od
+            JOIN Products p ON od.ProductID = p.ProductID
+            WHERE od.OrderID = @OrderID AND p.Stock < od.Quantity
+        )
+        BEGIN
+            RAISERROR('Not enough stock.', 16, 1);
+        END
+
+        -- Step 2: Reduce stock
+        UPDATE p
+        SET p.Stock = p.Stock - od.Quantity
+        FROM Products p
+        JOIN OrderDetails od ON p.ProductID = od.ProductID
+        WHERE od.OrderID = @OrderID;
+
+        -- Step 3: Mark order as complete
+        UPDATE Orders
+        SET Status = 'Completed'
+        WHERE OrderID = @OrderID;
+
+        COMMIT;
+    END TRY
+    BEGIN CATCH
+        ROLLBACK;
+        SELECT ERROR_MESSAGE() AS ErrorMessage;
+    END CATCH
+END;
+```
+
+---
+
 
 ## Key Concepts to Master:
 - View types and limitations
@@ -125,4 +275,5 @@ END;
 - View optimization techniques
 - Transaction management best practices
 - Error handling patterns
+
 - Security considerations 
