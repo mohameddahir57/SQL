@@ -1,6 +1,6 @@
 # Week 3: Joins & Relationships
 
-## 1\. Types of Joins 🤝
+## 1\. Types of Joins 
 
 **Joins** are used to combine rows from two or more tables based on a related column between them (often a Primary Key in one table and a Foreign Key in the other).
 
@@ -218,4 +218,5 @@ LEFT JOIN orders o ON p.product_id = o.product_id;
 - Join optimization techniques
 
 - Real-world join examples 
+
 
