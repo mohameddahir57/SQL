@@ -102,7 +102,7 @@ END;
 
 ## **1. Create Views for Common Queries**
 
-### ✔ Example: Sales summary view
+### Example: Sales summary view
 
 ```sql
 CREATE VIEW vw_SalesSummary AS
@@ -119,7 +119,7 @@ GROUP BY CustomerID;
 
 ## **2. Write Procedures with Error Handling**
 
-### ✔ Example: Insert order with TRY…CATCH
+### Example: Insert order with TRY…CATCH
 
 ```sql
 CREATE PROCEDURE AddOrder
@@ -145,7 +145,7 @@ END;
 
 ## **3. Implement Transaction Management**
 
-### ✔ Example: Transaction with rollback on failure
+### Example: Transaction with rollback on failure
 
 ```sql
 BEGIN TRAN;
@@ -171,7 +171,7 @@ END CATCH;
 
 ## **4. Create Parameterized Procedures**
 
-### ✔ Example: Get orders by date range
+### Example: Get orders by date range
 
 ```sql
 CREATE PROCEDURE GetOrdersByDate
@@ -189,7 +189,7 @@ END;
 
 ## **5. Update Data Through Views**
 
-### ✔ Step 1 — Create an updatable view
+### Step 1 — Create an updatable view
 
 ```sql
 CREATE VIEW vw_Products AS
@@ -197,7 +197,7 @@ SELECT ProductID, ProductName, Price
 FROM Products;
 ```
 
-### ✔ Step 2 — Update through the view
+### Step 2 — Update through the view
 
 ```sql
 UPDATE vw_Products
@@ -211,7 +211,7 @@ WHERE ProductID = 3;
 
 ## **6. Handle Complex Business Logic**
 
-### ✔ Example: Order processing logic
+### Example: Order processing logic
 
 ```sql
 CREATE PROCEDURE ProcessOrder
@@ -277,3 +277,4 @@ END;
 - Error handling patterns
 
 - Security considerations 
+
