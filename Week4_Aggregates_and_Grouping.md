@@ -1,6 +1,6 @@
 # Week 4: Aggregate Functions & Grouping
 
-## 1\. 📊 Aggregate Functions
+## 1\. Aggregate Functions
 
 Aggregate functions operate on a set of rows and return a single summary value. They are typically used with the `SELECT` statement and often with the `GROUP BY` clause.
 
@@ -354,7 +354,7 @@ GROUP BY p.category;
 
 ---
 
-# 📂 Sample Datasets
+# Sample Datasets
 
 These are example tables for practicing the queries above.
 
@@ -410,4 +410,5 @@ These are example tables for practicing the queries above.
 - Data Analysis with SQL
 
 - Performance Optimization for Aggregates 
+
 
