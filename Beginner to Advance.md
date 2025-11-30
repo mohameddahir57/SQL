@@ -282,7 +282,7 @@ Sure! Here's a clear breakdown of **each `INSERT` command** you've listed — **
 
 
 
-## ✅ 1. **Basic INSERT Syntax**
+## 1. **Basic INSERT Syntax**
 
 ### Example: Insert one product with all columns specified
 
@@ -293,7 +293,7 @@ VALUES ('Smartphone', 499.99, 80);
 
 ---
 
-## ✅ 2. **Multiple Rows INSERT**
+##  2. **Multiple Rows INSERT**
 
 ### Example: Insert several products in one command
 
@@ -307,7 +307,7 @@ VALUES
 
 ---
 
-## ✅ 3. **INSERT with SELECT**
+##  3. **INSERT with SELECT**
 
 ### Example: Copy from `temp_products` into `products`
 
@@ -326,7 +326,7 @@ SELECT name, price FROM temp_products;
 
 ---
 
-## ✅ 4. **INSERT IGNORE**
+##  4. **INSERT IGNORE**
 
 ### Example: Avoid error if duplicate primary key
 
@@ -338,7 +338,7 @@ VALUES (1, 'Duplicate Phone', 399.99);  -- This row will be ignored
 
 ---
 
-## ✅ 5. **INSERT ... ON DUPLICATE KEY UPDATE**
+##  5. **INSERT ... ON DUPLICATE KEY UPDATE**
 
 ### Example: Insert or update product if `product_id` already exists
 
@@ -352,7 +352,7 @@ ON DUPLICATE KEY UPDATE
 
 ---
 
-## ✅ 6. **INSERT with Calculated Expressions**
+##  6. **INSERT with Calculated Expressions**
 
 ### Example: Use an average price for a bundle product
 
@@ -363,7 +363,7 @@ VALUES ('Accessory Bundle', (SELECT AVG(price) FROM products) * 0.9, 25);
 
 ---
 
-## ✅ 7. **INSERT with SET Syntax**
+##  7. **INSERT with SET Syntax**
 
 ### Example: Use SET to insert values instead of VALUES keyword
 
@@ -376,7 +376,7 @@ SET name = '3D Printer',
 
 ---
 
-## ✅ 8. **INSERT with JSON**
+##  8. **INSERT with JSON**
 
 ### Example: Insert a product with JSON details
 
@@ -392,7 +392,7 @@ VALUES (1, '{"color": "black", "weight": "2.5kg", "features": ["wireless", "blue
 
 ---
 
-## ✅ 9. **Best Practice: Always Specify Columns**
+##  9. **Best Practice: Always Specify Columns**
 
 ### Good:
 
@@ -410,7 +410,7 @@ VALUES (NULL, 'Microphone', 89.99, 40, NULL);
 
 ---
 
-## ✅ 10. **Best Practice: Use Batch Inserts**
+##  10. **Best Practice: Use Batch Inserts**
 
 ### Good (batch insert):
 
@@ -432,7 +432,7 @@ INSERT INTO products (name, price) VALUES ('Item C', 30.00);
 
 ---
 
-## ✅ 11. **Best Practice: Use Transactions**
+##  11. **Best Practice: Use Transactions**
 
 ### Example: Multiple inserts in a transaction block
 
@@ -450,7 +450,7 @@ COMMIT;
 
 ---
 
-## ✅ 12. **Error Handling: Duplicate Key**
+##  12. **Error Handling: Duplicate Key**
 
 ### Solution 1: IGNORE
 
@@ -469,7 +469,7 @@ ON DUPLICATE KEY UPDATE name = VALUES(name);
 
 ---
 
-## ✅ 13. **Error Handling: Data Type Mismatch**
+##  13. **Error Handling: Data Type Mismatch**
 
 ### Example: Cast a string to the correct data type
 
@@ -483,7 +483,7 @@ That's great to hear! Since you've learned `INSERT` commands — which are about
 
 ---
 
-## 🔜 **Next Recommended Topic: SQL `SELECT` Statements**
+##  **Next Recommended Topic: SQL `SELECT` Statements**
 
 ### Why?
 
@@ -491,7 +491,7 @@ That's great to hear! Since you've learned `INSERT` commands — which are about
 
 ---
 
-## 📘 What You’ll Learn in the `SELECT` Topic:
+##  What You’ll Learn in the `SELECT` Topic:
 
 ### 1. **Basic SELECT Syntax**
 
@@ -561,7 +561,7 @@ The `UPDATE` statement allows you to **change values** in one or more columns **
 
 ---
 
-## 🔤 Basic Syntax
+##  Basic Syntax
 
 ```sql
 UPDATE table_name
@@ -569,11 +569,11 @@ SET column1 = value1, column2 = value2
 WHERE condition;
 ```
 
-⚠️ **Always use a `WHERE` clause**, or else **all rows will be updated**.
+  **Always use a `WHERE` clause**, or else **all rows will be updated**.
 
 ---
 
-## 🏝️ Let's Use Your `island` Table
+##  Let's Use Your `island` Table
 
 Assume your table looks like this:
 
@@ -588,9 +588,9 @@ SELECT * FROM island;
 
 ---
 
-## ✅ 1. **Update One Column**
+##  1. **Update One Column**
 
-### 🔹 Example: Change population of Bora Bora
+###   Example: Change population of Bora Bora
 
 ```sql
 UPDATE island
@@ -600,9 +600,9 @@ WHERE name = 'Bora Bora';
 
 ---
 
-## ✅ 2. **Update Multiple Columns**
+##  2. **Update Multiple Columns**
 
-### 🔹 Example: Update both area and population
+###   Example: Update both area and population
 
 ```sql
 UPDATE island
@@ -612,22 +612,22 @@ WHERE name = 'Bora Bora';
 
 ---
 
-## ✅ 3. **Update All Rows (Use with caution!)**
+##  3. **Update All Rows (Use with caution!)**
 
-### 🔹 Example: Increase all island populations by 5%
+###   Example: Increase all island populations by 5%
 
 ```sql
 UPDATE island
 SET population = population * 1.05;
 ```
 
-🚨 This affects every row. Only do this intentionally!
+  This affects every row. Only do this intentionally!
 
 ---
 
-## ✅ 4. **Update with a Condition**
+##  4. **Update with a Condition**
 
-### 🔹 Example: Set country to 'USA' where area is above 2000
+###   Example: Set country to 'USA' where area is above 2000
 
 ```sql
 UPDATE island
@@ -637,9 +637,9 @@ WHERE area_km2 > 2000;
 
 ---
 
-## ✅ 5. **Update Using Subquery**
+##   5. **Update Using Subquery**
 
-### 🔹 Example: Set population of smallest island to 999
+###   Example: Set population of smallest island to 999
 
 ```sql
 UPDATE island
@@ -649,7 +649,7 @@ WHERE area_km2 = (SELECT MIN(area_km2) FROM island);
 
 ---
 
-## ✅ 6. **Using LIMIT (in MySQL)**
+##   6. **Using LIMIT (in MySQL)**
 
 ```sql
 UPDATE island
@@ -658,11 +658,11 @@ ORDER BY population ASC
 LIMIT 1;
 ```
 
-📌 This updates just 1 row — the one with the **smallest population**.
+  This updates just 1 row — the one with the **smallest population**.
 
 ---
 
-## 🧠 Best Practices
+##  Best Practices
 
 | Tip                         | Why                                        |
 | --------------------------- | ------------------------------------------ |
@@ -672,15 +672,15 @@ LIMIT 1;
 
 ---
 
-## ❌ Common Mistakes
+##  Common Mistakes
 
-### ❗ Forgets WHERE:
+###  Forgets WHERE:
 
 ```sql
 UPDATE island SET population = 0;  -- updates **all rows**!
 ```
 
-### ❗ Wrong column name:
+###  Wrong column name:
 
 ```sql
 UPDATE island SET populations = 1000;  -- error: wrong column
@@ -696,24 +696,24 @@ Awesome — let’s move on to **`DELETE`**, the SQL command used to **remove ro
 
 
 
-## 🔥 What is `DELETE` in SQL?
+##  What is `DELETE` in SQL?
 
 `DELETE` permanently removes **one or more rows** from a table.
 
 ---
 
-## 🔤 Basic Syntax
+##  Basic Syntax
 
 ```sql
 DELETE FROM table_name
 WHERE condition;
 ```
 
-⚠️ **No `WHERE` = deletes all rows!**
+  **No `WHERE` = deletes all rows!**
 
 ---
 
-## 🏝️ Using Your `island` Table
+##  Using Your `island` Table
 
 Let’s say your table still looks like this:
 
@@ -728,9 +728,9 @@ Let’s say your table still looks like this:
 
 ---
 
-## ✅ 1. **Delete a Specific Row**
+##  1. **Delete a Specific Row**
 
-### 🔹 Delete Maui
+###  Delete Maui
 
 ```sql
 DELETE FROM island
@@ -739,9 +739,9 @@ WHERE name = 'Maui';
 
 ---
 
-## ✅ 2. **Delete Multiple Rows**
+##  2. **Delete Multiple Rows**
 
-### 🔹 Delete all islands in `France` or `Italy`
+###   Delete all islands in `France` or `Italy`
 
 ```sql
 DELETE FROM island
@@ -750,9 +750,9 @@ WHERE country IN ('France', 'Italy');
 
 ---
 
-## ✅ 3. **Delete Using Numeric Condition**
+##   3. **Delete Using Numeric Condition**
 
-### 🔹 Delete islands smaller than 1000 km²
+###   Delete islands smaller than 1000 km²
 
 ```sql
 DELETE FROM island
@@ -761,17 +761,17 @@ WHERE area_km2 < 1000;
 
 ---
 
-## ✅ 4. **Delete All Rows** (Be Careful!)
+##   4. **Delete All Rows** (Be Careful!)
 
 ```sql
 DELETE FROM island;
 ```
 
-💣 Removes **everything** but keeps the table structure.
+ Removes **everything** but keeps the table structure.
 
 ---
 
-## ✅ 5. **Delete with LIMIT** (MySQL only)
+##   5. **Delete with LIMIT** (MySQL only)
 
 ```sql
 DELETE FROM island
@@ -779,13 +779,13 @@ ORDER BY population ASC
 LIMIT 1;
 ```
 
-🧼 Deletes the **least populated** island.
+  Deletes the **least populated** island.
 
 ---
 
-## ✅ 6. **Delete with Subquery**
+##  6. **Delete with Subquery**
 
-### 🔹 Delete island with **max area**
+###   Delete island with **max area**
 
 ```sql
 DELETE FROM island
@@ -794,17 +794,17 @@ WHERE area_km2 = (SELECT MAX(area_km2) FROM island);
 
 ---
 
-## 🛑 DELETE vs DROP vs TRUNCATE
+##   DELETE vs DROP vs TRUNCATE
 
 | Command    | What it does              | Keeps table? | Rollbackable?            |
 | ---------- | ------------------------- | ------------ | ------------------------ |
-| `DELETE`   | Removes rows (with WHERE) | ✅ Yes        | ✅ Yes (with transaction) |
-| `DROP`     | Deletes entire table      | ❌ No         | ❌ No                     |
-| `TRUNCATE` | Deletes all rows fast     | ✅ Yes        | ❌ No (in most systems)   |
+| `DELETE`   | Removes rows (with WHERE) |   Yes        |  Yes (with transaction) |
+| `DROP`     | Deletes entire table      |   No         |  No                     |
+| `TRUNCATE` | Deletes all rows fast     |   Yes        |  No (in most systems)   |
 
 ---
 
-## 💡 Best Practices
+##  Best Practices
 
 1. **ALWAYS use `WHERE` unless you mean to delete all rows**.
 2. Use `SELECT` first to preview what you're deleting.
@@ -822,13 +822,13 @@ ROLLBACK;  -- or COMMIT;
 
 
 
-## 🔗 What is a `JOIN`?
+##  What is a `JOIN`?
 
 A **JOIN** lets you **combine rows from two or more tables** based on a related column between them — usually a **foreign key**.
 
 ---
 
-## 🏗️ Example Tables
+##  Example Tables
 
 Let’s say you have these two tables:
 
@@ -850,11 +850,11 @@ Let’s say you have these two tables:
 -- 3  | 3         | 5000000    | Culture
 ```
 
-> 🧠 `island_info.island_id` is a **foreign key** linking to `island.id`.
+>  `island_info.island_id` is a **foreign key** linking to `island.id`.
 
 ---
 
-## ✅ 1. **INNER JOIN**
+##  1. **INNER JOIN**
 
 Only returns rows with matching values in **both tables**.
 
@@ -865,7 +865,7 @@ INNER JOIN island_info
   ON island.id = island_info.island_id;
 ```
 
-**🔎 Result:**
+** Result:**
 
 | name   | population | famous\_for |
 | ------ | ---------- | ----------- |
@@ -875,7 +875,7 @@ INNER JOIN island_info
 
 ---
 
-## ✅ 2. **LEFT JOIN**
+##  2. **LEFT JOIN**
 
 Returns **all rows from the left table** (`island`), and matched rows from the right (`island_info`), or `NULL` if no match.
 
@@ -890,7 +890,7 @@ LEFT JOIN island_info
 
 ---
 
-## ✅ 3. **RIGHT JOIN**
+##  3. **RIGHT JOIN**
 
 Returns **all rows from the right table**, and matched rows from the left.
 
@@ -905,7 +905,7 @@ RIGHT JOIN island
 
 ---
 
-## ✅ 4. **FULL OUTER JOIN**
+##  4. **FULL OUTER JOIN**
 
 Returns all records when there's a match in **either table**.
 
@@ -916,11 +916,11 @@ FULL OUTER JOIN island_info
   ON island.id = island_info.island_id;
 ```
 
-> ✅ Requires a DB that supports full outer joins (like PostgreSQL).
+>  Requires a DB that supports full outer joins (like PostgreSQL).
 
 ---
 
-## ✅ 5. **CROSS JOIN**
+##  5. **CROSS JOIN**
 
 Returns **every combination** of rows from both tables.
 
@@ -930,11 +930,11 @@ FROM island
 CROSS JOIN island_info;
 ```
 
-> ⚠️ Be careful — the result can grow **very large**!
+>  Be careful — the result can grow **very large**!
 
 ---
 
-## 🔐 Real-Life Use Case
+##  Real-Life Use Case
 
 Imagine you have:
 
@@ -951,7 +951,7 @@ JOIN orders ON customers.id = orders.customer_id;
 
 ---
 
-## 🧠 JOIN Types Summary
+##  JOIN Types Summary
 
 | Type    | Returns...                            |
 | ------- | ------------------------------------- |
@@ -971,11 +971,11 @@ Awesome! Let’s learn about **Aggregate Functions** and **`GROUP BY`**, which l
 
 ---
 
-## 📊 What Are Aggregate Functions?
+## What Are Aggregate Functions?
 
 Aggregate functions perform **calculations** on a **group of rows**, returning **a single value**.
 
-### 🔹 Common Aggregate Functions:
+###  Common Aggregate Functions:
 
 | Function  | What it does            |
 | --------- | ----------------------- |
@@ -987,13 +987,13 @@ Aggregate functions perform **calculations** on a **group of rows**, returning *
 
 ---
 
-## 🧠 What is `GROUP BY`?
+##  What is `GROUP BY`?
 
 `GROUP BY` groups rows **with the same value** in specified columns so you can apply aggregate functions **per group**.
 
 ---
 
-## 🏝️ Example: island Table
+## Example: island Table
 
 Let’s say we have this data:
 
@@ -1007,7 +1007,7 @@ Let’s say we have this data:
 
 ---
 
-## ✅ 1. `COUNT()` — How many islands per country?
+##  1. `COUNT()` — How many islands per country?
 
 ```sql
 SELECT country, COUNT(*) AS island_count
@@ -1025,7 +1025,7 @@ GROUP BY country;
 
 ---
 
-## ✅ 2. `SUM()` — Total population per country
+##  2. `SUM()` — Total population per country
 
 ```sql
 SELECT country, SUM(population) AS total_population
@@ -1035,7 +1035,7 @@ GROUP BY country;
 
 ---
 
-## ✅ 3. `AVG()` — Average island size per country
+##  3. `AVG()` — Average island size per country
 
 ```sql
 SELECT country, AVG(area_km2) AS avg_area
@@ -1045,7 +1045,7 @@ GROUP BY country;
 
 ---
 
-## ✅ 4. `MAX()` and `MIN()` — Largest and smallest islands per country
+##  4. `MAX()` and `MIN()` — Largest and smallest islands per country
 
 ```sql
 SELECT country, MAX(area_km2) AS largest_island, MIN(area_km2) AS smallest_island
@@ -1055,7 +1055,7 @@ GROUP BY country;
 
 ---
 
-## ✅ 5. `GROUP BY` with `ORDER BY`
+##  5. `GROUP BY` with `ORDER BY`
 
 ```sql
 SELECT country, COUNT(*) AS island_count
@@ -1066,7 +1066,7 @@ ORDER BY island_count DESC;
 
 ---
 
-## ✅ 6. Filtering with `HAVING` (After `GROUP BY`)
+##  6. Filtering with `HAVING` (After `GROUP BY`)
 
 ```sql
 SELECT country, COUNT(*) AS island_count
@@ -1079,7 +1079,7 @@ HAVING island_count > 1;
 
 ---
 
-## ✅ 7. Without GROUP BY — Aggregate all rows
+##  7. Without GROUP BY — Aggregate all rows
 
 ```sql
 SELECT COUNT(*) AS total_islands, SUM(population) AS total_population
@@ -1101,11 +1101,11 @@ FROM island;
 
 
 
-Great! Let’s dive into **🧠 Subqueries** — one of the most powerful features in SQL.
+Great! Let’s dive into ** Subqueries** — one of the most powerful features in SQL.
 
 ---
 
-## 🔍 What is a Subquery?
+##  What is a Subquery?
 
 A **subquery** (or nested query) is a `SELECT` statement **inside another SQL statement**.
 
@@ -1118,7 +1118,7 @@ Subqueries can be used in:
 
 ---
 
-## 🏝 Example Table: `island`
+##  Example Table: `island`
 
 | id | name   | country   | area\_km2 | population |
 | -- | ------ | --------- | --------- | ---------- |
@@ -1130,7 +1130,7 @@ Subqueries can be used in:
 
 ---
 
-## ✅ 1. Subquery in `WHERE` Clause
+##  1. Subquery in `WHERE` Clause
 
 Get islands with **above-average population**:
 
@@ -1144,7 +1144,7 @@ WHERE population > (
 
 ---
 
-## ✅ 2. Subquery in `SELECT` Clause
+##  2. Subquery in `SELECT` Clause
 
 Show island + country + average area of **all islands**:
 
@@ -1156,7 +1156,7 @@ FROM island;
 
 ---
 
-## ✅ 3. Subquery in `FROM` Clause
+##  3. Subquery in `FROM` Clause
 
 Use subquery as a temporary table:
 
@@ -1171,7 +1171,7 @@ FROM (
 
 ---
 
-## ✅ 4. Subquery with `IN`
+##  4. Subquery with `IN`
 
 Get islands in the **same countries** as those with more than 2 islands:
 
@@ -1188,7 +1188,7 @@ WHERE country IN (
 
 ---
 
-## ✅ 5. Subquery with `EXISTS`
+##  5. Subquery with `EXISTS`
 
 Check if a country has **any island with area > 10,000**:
 
@@ -1204,7 +1204,7 @@ WHERE EXISTS (
 
 ---
 
-## ✅ 6. Correlated Subquery
+##  6. Correlated Subquery
 
 Compare each island to the **average population of its own country**:
 
@@ -1218,11 +1218,11 @@ WHERE population > (
 );
 ```
 
-> ⚠️ Correlated subqueries refer to the **outer query’s row**, so they are **re-evaluated for each row**.
+>   Correlated subqueries refer to the **outer query’s row**, so they are **re-evaluated for each row**.
 
 ---
 
-## 💡 Subquery Tips
+##  Subquery Tips
 
 | Use Case            | Best Option         |
 | ------------------- | ------------------- |
@@ -1237,11 +1237,11 @@ WHERE population > (
 
 
 
-Awesome! 🎯 Let's level up with **Advanced `SELECT` Filtering** — techniques to filter rows precisely using SQL.
+Awesome!  Let's level up with **Advanced `SELECT` Filtering** — techniques to filter rows precisely using SQL.
 
 ---
 
-## 🔍 1. `BETWEEN` – Filter a Range of Values
+##  1. `BETWEEN` – Filter a Range of Values
 
 ```sql
 SELECT name, area_km2
@@ -1249,11 +1249,11 @@ FROM island
 WHERE area_km2 BETWEEN 1000 AND 6000;
 ```
 
-> ✅ Includes both 1000 **and** 6000
+>  Includes both 1000 **and** 6000
 
 ---
 
-## 🔍 2. `IN` – Match Against Multiple Values
+##  2. `IN` – Match Against Multiple Values
 
 ```sql
 SELECT name, country
@@ -1261,11 +1261,11 @@ FROM island
 WHERE country IN ('Indonesia', 'Italy');
 ```
 
-> 🔁 Same as using multiple `OR` conditions
+>  Same as using multiple `OR` conditions
 
 ---
 
-## 🔍 3. `LIKE` – Pattern Matching
+##  3. `LIKE` – Pattern Matching
 
 ```sql
 SELECT name
@@ -1284,7 +1284,7 @@ WHERE name LIKE 'M%';  -- Starts with M
 
 ---
 
-## 🔍 4. `IS NULL` / `IS NOT NULL`
+##  4. `IS NULL` / `IS NOT NULL`
 
 ```sql
 SELECT name
@@ -1296,7 +1296,7 @@ WHERE population IS NULL;
 
 ---
 
-## 🔍 5. Logical Operators: `AND`, `OR`, `NOT`
+##  5. Logical Operators: `AND`, `OR`, `NOT`
 
 ```sql
 SELECT name
@@ -1312,7 +1312,7 @@ WHERE NOT country = 'Italy';
 
 ---
 
-## 🔍 6. `CASE` for Conditional Filtering in Results
+##  6. `CASE` for Conditional Filtering in Results
 
 ```sql
 SELECT name, country,
@@ -1326,7 +1326,7 @@ FROM island;
 
 ---
 
-## 🔍 7. Combine with `ORDER BY`, `LIMIT`, `DISTINCT`
+##  7. Combine with `ORDER BY`, `LIMIT`, `DISTINCT`
 
 ```sql
 -- Top 3 largest islands
@@ -1344,7 +1344,7 @@ FROM island;
 
 ---
 
-## 🧠 Bonus: Filter with Subquery
+##  Bonus: Filter with Subquery
 
 ```sql
 SELECT name
@@ -1356,7 +1356,7 @@ WHERE area_km2 > (
 
 ---
 
-## 🔄 Summary Table
+##  Summary Table
 
 | Clause       | Use Case                     |
 | ------------ | ---------------------------- |
@@ -1377,22 +1377,22 @@ WHERE area_km2 > (
 
 
 
-Perfect! 🧱 Let’s learn about **Table Design & Relationships** — the foundation of a good database structure.
+Perfect!  Let’s learn about **Table Design & Relationships** — the foundation of a good database structure.
 
 ---
 
-## 🧩 1. Why Table Design Matters
+##  1. Why Table Design Matters
 
 Designing tables well ensures:
 
-* ✅ Organized, reliable data
-* ✅ Efficient queries
-* ✅ Easy maintenance
-* ✅ Enforced data rules (integrity)
+*  Organized, reliable data
+*  Efficient queries
+*  Easy maintenance
+*  Enforced data rules (integrity)
 
 ---
 
-## 🧱 2. Table Components
+##  2. Table Components
 
 Each SQL table has:
 
@@ -1405,7 +1405,7 @@ Each SQL table has:
 
 ---
 
-## 🔐 3. Common Constraints
+##  3. Common Constraints
 
 | Constraint    | Meaning                              |
 | ------------- | ------------------------------------ |
@@ -1418,7 +1418,7 @@ Each SQL table has:
 
 ---
 
-## 🗂 4. Primary Keys
+##  4. Primary Keys
 
 * Each table **must have a primary key**
 * Can be one column or multiple (composite key)
@@ -1432,7 +1432,7 @@ CREATE TABLE country (
 
 ---
 
-## 🔗 5. Foreign Keys – Table Relationships
+##  5. Foreign Keys – Table Relationships
 
 * A foreign key in one table **references a primary key in another**
 * Used to **connect data** between tables
@@ -1452,7 +1452,7 @@ Here, many islands can belong to one country.
 
 ---
 
-## 📚 6. Types of Relationships
+##  6. Types of Relationships
 
 | Type         | Description                                |
 | ------------ | ------------------------------------------ |
@@ -1475,7 +1475,7 @@ CREATE TABLE student_course (
 
 ---
 
-## 🎯 7. Naming Conventions (Best Practice)
+##  7. Naming Conventions (Best Practice)
 
 | Element    | Example          |
 | ---------- | ---------------- |
@@ -1486,7 +1486,7 @@ CREATE TABLE student_course (
 
 ---
 
-## ✅ Example: Full Setup
+##  Example: Full Setup
 
 ```sql
 CREATE TABLE country (
@@ -1506,7 +1506,7 @@ CREATE TABLE island (
 
 ---
 
-## 🧠 Summary
+##  Summary
 
 * **Primary Key** = Unique row ID
 * **Foreign Key** = Connects tables
@@ -1525,22 +1525,22 @@ CREATE TABLE island (
 
 
 
-Awesome! 🧪 Let’s explore **Transactions and Rollbacks** — critical for ensuring safe and reliable database operations.
+Awesome!  Let’s explore **Transactions and Rollbacks** — critical for ensuring safe and reliable database operations.
 
 ---
 
-## 💡 What is a Transaction?
+##  What is a Transaction?
 
 A **transaction** is a group of one or more SQL operations that are **executed as a single unit**.
 If **any part fails**, the **whole transaction can be rolled back**.
 
 Think of it like:
 
-> 💳 “Transfer money from Account A ➡️ to Account B — but only if both operations succeed.”
+>  “Transfer money from Account A to Account B — but only if both operations succeed.”
 
 ---
 
-## 🔐 Transaction Properties (ACID)
+## Transaction Properties (ACID)
 
 | Property            | Meaning                                      |
 | ------------------- | -------------------------------------------- |
@@ -1562,11 +1562,11 @@ UPDATE accounts SET balance = balance + 100 WHERE id = 2;
 COMMIT;
 ```
 
-> ✅ All changes are saved only when `COMMIT` is executed.
+>  All changes are saved only when `COMMIT` is executed.
 
 ---
 
-## 🧯 2. ROLLBACK – Undo a Transaction
+##  2. ROLLBACK – Undo a Transaction
 
 ```sql
 START TRANSACTION;
@@ -1576,11 +1576,11 @@ UPDATE accounts SET balance = balance - 100 WHERE id = 1;
 ROLLBACK;
 ```
 
-> 🔄 No changes are saved. Everything is undone.
+>  No changes are saved. Everything is undone.
 
 ---
 
-## ✅ 3. COMMIT – Finalize the Transaction
+##  3. COMMIT – Finalize the Transaction
 
 ```sql
 COMMIT;
@@ -1590,7 +1590,7 @@ After this, the changes are **permanently saved** to the database.
 
 ---
 
-## ⚠️ 4. Real-World Example
+##   4. Real-World Example
 
 ```sql
 START TRANSACTION;
@@ -1606,7 +1606,7 @@ ROLLBACK;
 
 ---
 
-## 🧠 5. Savepoints (Optional/Advanced)
+##  5. Savepoints (Optional/Advanced)
 
 You can mark points in a transaction to **partially roll back**.
 
@@ -1626,7 +1626,7 @@ COMMIT;
 
 ---
 
-## 🚀 Summary
+##  Summary
 
 | Keyword             | Description                                   |
 | ------------------- | --------------------------------------------- |
@@ -1644,15 +1644,15 @@ COMMIT;
 
 
 
-Great choice! 📂 **Views** and **Stored Procedures** are powerful tools that help organize, simplify, and reuse SQL logic. Let’s explore both.
+Great choice!  **Views** and **Stored Procedures** are powerful tools that help organize, simplify, and reuse SQL logic. Let’s explore both.
 
 ---
 
-## 📄 1. **Views** — Virtual Tables
+##  1. **Views** — Virtual Tables
 
 A **View** is a saved SQL query. It acts like a table but **doesn’t store data**, only the logic.
 
-### ✅ Why Use Views?
+###  Why Use Views?
 
 * Simplify complex queries
 * Improve security (hide sensitive columns)
@@ -1667,27 +1667,27 @@ FROM island
 WHERE area_km2 > 10000;
 ```
 
-### 📊 Use the View Like a Table
+###  Use the View Like a Table
 
 ```sql
 SELECT * FROM large_islands;
 ```
 
-### 🧽 Update or Drop the View
+###  Update or Drop the View
 
 ```sql
 DROP VIEW large_islands;
 ```
 
-> ⚠️ Not all views are editable (depends on the query inside).
+>  Not all views are editable (depends on the query inside).
 
 ---
 
-## ⚙️ 2. **Stored Procedures** — Reusable SQL Blocks
+##  2. **Stored Procedures** — Reusable SQL Blocks
 
 A **Stored Procedure** is a block of SQL statements saved in the database that you can **call by name**.
 
-### ✅ Why Use Stored Procedures?
+###  Why Use Stored Procedures?
 
 * Reuse SQL logic
 * Accept parameters
@@ -1696,7 +1696,7 @@ A **Stored Procedure** is a block of SQL statements saved in the database that y
 
 ---
 
-### 📥 Create a Procedure
+###  Create a Procedure
 
 ```sql
 DELIMITER $$
@@ -1713,7 +1713,7 @@ DELIMITER ;
 
 ---
 
-### ▶️ Call the Procedure
+###  Call the Procedure
 
 ```sql
 CALL GetIslandsByCountry('Indonesia');
@@ -1721,7 +1721,7 @@ CALL GetIslandsByCountry('Indonesia');
 
 ---
 
-### 🧽 Drop the Procedure
+###  Drop the Procedure
 
 ```sql
 DROP PROCEDURE GetIslandsByCountry;
@@ -1729,19 +1729,19 @@ DROP PROCEDURE GetIslandsByCountry;
 
 ---
 
-## 🔍 Comparison Table
+##  Comparison Table
 
 | Feature            | View                | Stored Procedure      |
 | ------------------ | ------------------- | --------------------- |
-| Acts Like a Table  | ✅                   | ❌                     |
-| Stores Data        | ❌ (just logic)      | ❌ (logic only)        |
+| Acts Like a Table  | ✅                  | ❌                     |
+| Stores Data        |   (just logic)      | ❌ (logic only)        |
 | Accepts Parameters | ❌                   | ✅                     |
 | Useful For         | Simplifying queries | Reusable operations   |
 | Supports Logic     | No                  | Yes (e.g., IF, loops) |
 
 ---
 
-## 🎯 Summary
+##  Summary
 
 * Use **Views** to simplify complex `SELECT` queries
 * Use **Stored Procedures** for reusable, parameterized SQL logic
@@ -1756,7 +1756,7 @@ DROP PROCEDURE GetIslandsByCountry;
 
 
 
-Great! 🔄 Let’s dive into **Indexes** — the secret behind fast SQL queries.
+Great!  Let’s dive into **Indexes** — the secret behind fast SQL queries.
 
 ---
 
@@ -2331,3 +2331,4 @@ CREATE TABLE product_suppliers (
 
 ---
 *Note: This document will be updated with more SQL topics as we progress through the course.*
+
